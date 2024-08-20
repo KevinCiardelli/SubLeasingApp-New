@@ -4,6 +4,8 @@
 //
 //  Created by Kevin Ciardelli on 4/27/23.
 //
+//File to view a Location Object
+//Main goal is to squire all relevant data and display
 
 import SwiftUI
 import MapKit
@@ -11,7 +13,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import UIKit
 
-
+//TempStructs for contact sheet
 struct BlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style
 
@@ -23,11 +25,14 @@ struct BlurView: UIViewRepresentable {
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
+//Struct for contact sheet toggle
 struct ContactInfoView: View {
     let phone: String
     let email: String
     var onClose: () -> Void
     
+    //some is of the opaque typing where Swift idenitfies the object to return
+    //Hides the cmplexity and makes sure it runs correctly :)
     var body: some View {
         VStack {
             Spacer()
@@ -51,7 +56,9 @@ struct ContactInfoView: View {
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.primary)
                 
-                
+                //same for both
+                //if the system allows for calling/emailing it will highlight blue and prompt the associated app
+                //if no it still states the information without hyperlinks
                 if let phoneURL = URL(string: "tel:\(phone)"), UIApplication.shared.canOpenURL(phoneURL) {
                     Link(destination: phoneURL) {
                         HStack {
@@ -106,6 +113,7 @@ struct ContactInfoView: View {
 
 struct LocationsDisplayView: View {
 
+    //unique id for map purposes
     struct Annotation: Identifiable {
         let id = UUID().uuidString
         var name: String
@@ -113,11 +121,17 @@ struct LocationsDisplayView: View {
         var coordinate: CLLocationCoordinate2D
     }
     
+
     @Environment(\.dismiss) private var dismiss
+    //passed in through the nav link
     @State var location: Location
+    //Cord for map
+    //private for only within this view
     @State private var mapRegion = MKCoordinateRegion()
     @State private var annotations: [Annotation] = []
+    //sheet for contact
     @State private var isShowingMailView = false
+    //Grabbing the photos assocaited with the location
     @FirestoreQuery(collectionPath: "Locations") var photos: [Photo]
     var previewRunning = false
     
@@ -129,6 +143,7 @@ struct LocationsDisplayView: View {
                 
                 
                 if !location.photoURLs.isEmpty {
+                    //Making a swipable function for every photo listed with the Location if there exists any
                     TabView {
                         ForEach(location.photoURLs, id: \.self) { url in
                             if let imageURL = URL(string: url) {

@@ -19,6 +19,7 @@ struct UserListingViews: View {
     
     var body: some View {
         NavigationStack(path: $path){
+            //grabbing just the ID within userID //First parameter
             List(locations.filter {$0.userID ==  userID}){ location in
                 NavigationLink(destination: UserDisplayView(location: location)) {
                         Text(location.address)

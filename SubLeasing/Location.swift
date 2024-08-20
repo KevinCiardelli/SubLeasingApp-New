@@ -11,8 +11,10 @@ import CoreLocation
 import SwiftUI
 
 struct Location: Identifiable, Codable {
-
+    //Making sure each Location is individualized and can be accessed if called upon which we do a lot
     @DocumentID var id: String?
+
+    //Props
     var userID = ""
     var name = ""
     var address = ""
@@ -32,6 +34,7 @@ struct Location: Identifiable, Codable {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
+    //Dictionary for firebase records
     var dictionary: [String: Any] {
         return ["name": name, "address": address, "email": email, "phone": phone, "numberValue": numberValue, "negotiate": negotiate, "parking": parking, "number_of_bedrooms": number_of_bedrooms, "ammenities": ammenities, "userID": userID, "latitude": latitude, "longitude": longitude, "photoURLs": photoURLs]
     }
