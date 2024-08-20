@@ -1,3 +1,10 @@
+//
+//  NewLocationDetailView.swift
+//  FinalProject
+//
+//  Created by Kevin Ciardelli on 4/27/23.
+//
+
 import SwiftUI
 import FirebaseAuth
 import CoreLocation
@@ -111,7 +118,7 @@ struct NewLocationDetailView: View {
                                 .shadow(radius: 5)
                         }
 
-                        // PhotosPicker for selecting multiple images
+                        
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Upload Photos:")
                                 .font(.headline)
@@ -136,7 +143,7 @@ struct NewLocationDetailView: View {
                                 }
                             }
 
-                            // Display selected photos
+                            
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ForEach(selectedPhotos, id: \.self) { photo in
@@ -177,16 +184,16 @@ struct NewLocationDetailView: View {
                                 guard let userID = Auth.auth().currentUser?.uid else { return }
                                 location.userID = userID
                                 
-                                // Geocode the address
+                                
                                 let geocodedLocation = try await geocodeAddress(location.address)
                                 location.latitude = geocodedLocation.latitude
                                 location.longitude = geocodedLocation.longitude
                                 
-                                // Upload selected photos to Firebase Storage
+                                
                                 let photoURLs = await uploadPhotos()
                                 location.photoURLs = photoURLs
 
-                                // Save the location with photo URLs to Firestore
+                                
                                 let success = await locationVM.saveLocation(location: location)
                                 
                                 if success {

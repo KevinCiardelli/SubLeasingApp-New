@@ -1,3 +1,10 @@
+//
+//  UserDisplayView.swift
+//  FinalProject
+//
+//  Created by Kevin Ciardelli on 4/27/23.
+//
+
 import SwiftUI
 import MapKit
 import PhotosUI
@@ -31,7 +38,7 @@ struct UserDisplayView: View {
                         .frame(width: 400, height: 90)
                         .foregroundColor(Color("BC"))
                         .ignoresSafeArea()
-                    // Editable Name
+                    
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Poster Name")
                             .foregroundColor(.white)
@@ -43,7 +50,7 @@ struct UserDisplayView: View {
                             .padding(.horizontal)
                     }
                     
-                    // Editable Address
+                    
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Address")
                             .foregroundColor(.white)
@@ -55,7 +62,7 @@ struct UserDisplayView: View {
                             .padding(.horizontal)
                     }
                     
-                    // Editable Price
+                    
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Asking Price")
                             .foregroundColor(.white)
@@ -69,7 +76,7 @@ struct UserDisplayView: View {
                             .padding(.horizontal)
                     }
 
-                    // Parking Availability and Bedrooms
+                    
                     HStack(spacing: 20) {
                         Toggle(isOn: $location.parking) {
                             Text("Parking Available")
@@ -85,7 +92,7 @@ struct UserDisplayView: View {
                     }
                     .padding(.vertical)
 
-                    // Editable Amenities
+                    
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Amenities")
                             .foregroundColor(.white)
@@ -97,7 +104,7 @@ struct UserDisplayView: View {
                             .padding(.horizontal)
                     }
 
-                    // Map View
+                    
                     VStack(alignment: .leading) {
                         Text("Location on Map")
                             .foregroundColor(.white)
@@ -112,7 +119,7 @@ struct UserDisplayView: View {
                         .padding()
                     }
 
-                    // Display and Delete Existing Photos
+                    
                     if !location.photoURLs.isEmpty {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Existing Photos")
@@ -160,7 +167,7 @@ struct UserDisplayView: View {
                         }
                     }
 
-                    // PhotosPicker for selecting and uploading new photos
+                    
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Upload Photos:")
                             .font(.headline)
@@ -186,7 +193,7 @@ struct UserDisplayView: View {
                             }
                         }
 
-                        // Display selected photos
+                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(selectedPhotos, id: \.self) { photo in
@@ -204,11 +211,11 @@ struct UserDisplayView: View {
 
                     Spacer()
 
-                    // Save Button
+                    
                     Button("Save") {
                         uploading = true
                         Task {
-                            // Upload new photos and update location data
+                            
                             let photoURLs = await uploadPhotos()
                             location.photoURLs.append(contentsOf: photoURLs)
                             await saveLocationData()
@@ -261,13 +268,13 @@ struct UserDisplayView: View {
         .ignoresSafeArea()
     }
     
-    // Function to save the location data
+    
     private func saveLocationData() async {
         await locationVM.saveLocation(location: location)
         dismiss()
     }
 
-    // Function to upload new photos and return their URLs
+  
     private func uploadPhotos() async -> [String] {
         var photoURLs: [String] = []
         
@@ -287,11 +294,11 @@ struct UserDisplayView: View {
         return photoURLs
     }
 
-    // Function to delete a photo
+
     private func deletePhoto(photoURL: String) {
         guard let index = location.photoURLs.firstIndex(of: photoURL) else { return }
         location.photoURLs.remove(at: index)
-        // Here, you may also want to delete the image from Firebase Storage if necessary.
+        
     }
 }
 

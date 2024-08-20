@@ -1,3 +1,10 @@
+//
+//  Location.swift
+//  FinalProject
+//
+//  Created by Kevin Ciardelli on 4/27/23.
+//
+
 import Foundation
 import FirebaseFirestoreSwift
 import CoreLocation
@@ -19,7 +26,6 @@ struct Location: Identifiable, Codable {
     var latitude = 0.0
     var longitude = 0.0
     
-    // Array to store URLs (or paths) to the photos
     var photoURLs: [String] = []
 
     var coordinate: CLLocationCoordinate2D {

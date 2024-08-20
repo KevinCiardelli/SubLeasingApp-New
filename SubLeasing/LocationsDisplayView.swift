@@ -1,10 +1,17 @@
+//
+//  LocationsDisplayView.swift
+//  FinalProject
+//
+//  Created by Kevin Ciardelli on 4/27/23.
+//
+
 import SwiftUI
 import MapKit
 import Firebase
 import FirebaseFirestoreSwift
 import UIKit
 
-// Utility to add blur effect
+
 struct BlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style
 
@@ -25,7 +32,7 @@ struct ContactInfoView: View {
         VStack {
             Spacer()
             VStack(spacing: 20) {
-                // Close button aligned to the top right
+                
                 HStack {
                     Spacer()
                     Button(action: {
@@ -39,12 +46,12 @@ struct ContactInfoView: View {
                     }
                 }
                 
-                // Title
+                
                 Text("Contact Information")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.primary)
                 
-                // Phone Link
+                
                 if let phoneURL = URL(string: "tel:\(phone)"), UIApplication.shared.canOpenURL(phoneURL) {
                     Link(destination: phoneURL) {
                         HStack {
@@ -65,7 +72,7 @@ struct ContactInfoView: View {
                         .foregroundColor(.primary)
                 }
                 
-                // Email Link
+                
                 if let emailURL = URL(string: "mailto:\(email)"), UIApplication.shared.canOpenURL(emailURL) {
                     Link(destination: emailURL) {
                         HStack {
@@ -120,7 +127,7 @@ struct LocationsDisplayView: View {
         ScrollView(showsIndicators: true) {
             VStack(alignment: .leading) {
                 
-                // Image Carousel
+                
                 if !location.photoURLs.isEmpty {
                     TabView {
                         ForEach(location.photoURLs, id: \.self) { url in
@@ -161,13 +168,13 @@ struct LocationsDisplayView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 16) {
-                    // Title
+                    
                     Text(location.address)
                         .font(.title)
                         .bold()
                         .padding([.leading, .trailing])
                     
-                    // Pricing and Key Details
+                    
                     HStack {
                         Text("Asking: $\(Int(location.numberValue)).00")
                             .font(.title2)
@@ -187,7 +194,7 @@ struct LocationsDisplayView: View {
 
                     Divider()
 
-                    // Additional Information
+                    
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Amenities")
                             .font(.headline)
@@ -201,7 +208,7 @@ struct LocationsDisplayView: View {
 
                     Divider()
 
-                    // Map View
+                    
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Location")
                             .font(.headline)
@@ -217,7 +224,7 @@ struct LocationsDisplayView: View {
 
                     Divider()
 
-                    // Contact Information Button
+                    
                     Button(action: {
                         withAnimation {
                             isShowingMailView.toggle()
