@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>664302635017-mj4ssn0pr8ocjj573fidhbcetqu5jtnj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.664302635017-mj4ssn0pr8ocjj573fidhbcetqu5jtnj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCXsQZL8Jf5yJqWLtGo-7N-oUSQiE_A4ag</string>
+	<key>GCM_SENDER_ID</key>
+	<string>664302635017</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Ciardelli.SubLeasing</string>
+	<key>PROJECT_ID</key>
+	<string>subleasing-78566</string>
+	<key>STORAGE_BUCKET</key>
+	<string>subleasing-78566.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:664302635017:ios:c9bc575bfe4fc8d1f950d8</string>
+</dict>
+</plist>
